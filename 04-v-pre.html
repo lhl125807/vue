@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 不管标签里面是什么 就是原样输出 -->
+        <div v-pre>{{msg}}</div>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script> 
+    <script>
+       const app = new Vue({
+           el: '#app',
+           data: {
+               msg: "123123123  123123123  12312312      123123132"
+           }
+       })
+    </script>
+</body>
+</html>

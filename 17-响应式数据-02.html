@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in list">{{item}}</li>
+        </ul>
+        <button @click="modify">修改了数据</button>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                list: [1, 2, 3, 4, 5]
+            },
+            methods: {
+                modify() {
+                    // 不能渲染页面
+                    // this.list[0] = 666;
+                    // 1. this.$set
+                    // this.$set(this.list, 0, 666)
+                    // 2. 强制更新
+                    // this.list[0] = 666;
+                    // this.$forceUpdate();
+                    // 3. push方法已经经过Vue重写了 (Vue push pop...unshift shift)
+                    // this.list.push(666)
+                    // this.list.pop()
+                    // 4. 直接替换数组内容
+                    // this.list = [4, 5, 6, 7, 8]
+                }
+            }
+        })
+    </script>
+</body>
+</html>

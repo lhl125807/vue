@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{count}}
+
+
+        <!-- 
+            v-on: === @
+         -->
+        <!-- <button v-on:click="add">增加</button> -->
+        <button @click="add">增加</button>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                count: 0
+            },
+            // 方法
+            methods: {
+                add() {
+                    // console.log("执行了add")
+                    // 使用this就可以操作data中的数据了
+                   this.count++;
+                }
+            }
+        })
+
+        // app.count
+        // app.add
+    </script>
+</body>
+</html>

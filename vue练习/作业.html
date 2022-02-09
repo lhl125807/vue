@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <script script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
+    <style>
+        table-layout:fixed table {
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="root">
+        <input type="text" v-model="bh" placeholder="输入编号" class="ink1">
+        <br>
+        <input type="text" v-model="mc" placeholder="输入名称" class="ink2">
+        <br>
+        <button @click="add">添加数据</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <td>编号</td>
+                    <td>品牌名称</td>
+                    <td>创建时间</td>
+                    <td>操作</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="zhun" v-for="(item,index) in list">
+                    <td>{{item.bh}}</td>
+                    <td>{{item.mc}}</td>
+                    <td>{{item.shijian}}</td>
+                    <td><a href="#" @click="shanchu">删除</a></td>
+                </tr>
+            </tbody>
+            <!-- <tbody class="tob"> -->
+
+
+            <!-- <a href="#" @click="shanchu">删除</a> -->
+
+
+            <!-- </tbody> -->
+        </table>
+
+    </div>
+
+    <script>
+        function formatDate(now) {
+            var year = now.getFullYear();
+            var month = now.getMonth() + 1;
+            var date = now.getDate();
+            var hour = now.getHours();
+            var minute = now.getMinutes();
+            var second = now.getSeconds();
+            return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+        }
+        var timestamp3 = new Date().getTime();
+        //如果记得时间戳是毫秒级的就需要*1000 不然就错了记得转换成整型
+        var d = new Date(timestamp3);
+
+        // alert(d)
+
+        // alert(formatDate(d));
+
+        var aaa = document.querySelector("a")
+
+        Vue.config.productionTip = false;
+        new Vue({
+            el: '#root',
+            data: {
+                bh: "",
+                mc: "",
+
+                list: [],
+
+                // sj: Date.now(),
+
+                // shjian: getLocalTime(shijian)
+                shijian: formatDate(d),
+
+
+                // shanchu: "<a href='#'>删除</a>"
+             
+
+
+            },
+            methods: {
+                add() {
+                    var obj = {
+                        bh: this.bh,
+                        mc: this.mc,
+                        shijian: this.shijian,
+
+                    }
+                    this.list.push(
+                        obj
+                    )
+                    this.bh='';
+                    this.mc='';
+
+
+
+                },
+                shanchu() {
+                    var shan = document.querySelector(".zhun")
+                    var tbody = document.querySelector("tbody")
+                     tbody.removeChild(shan);  
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>

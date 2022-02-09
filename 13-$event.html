@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            $event 自带一个事件对象
+         -->
+        <input type="text" v-model="msg" @keyup="add($event)">
+
+        <ul>
+            <li v-for="item in list">{{item}}</li>
+        </ul>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                msg: '',
+                list: []
+            },
+            methods: {
+                add(event) {
+                    // console.log(event)
+                    // 触发事件的元素对象
+                    console.log(event.target)
+                    // 绑定事件的元素对象
+                    console.log(event.currentTarget)
+                    if(event.keyCode === 13) {
+                        // 等于13的时候就是回车键
+                        this.list.push(this.msg)
+                        // 清空input里面的内容
+                        this.msg = ""
+                    }
+                    
+                }
+            }
+        })
+    </script>
+</body>
+</html>

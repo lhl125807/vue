@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+</head>
+<body>
+    <div id="app">
+        <form style="width: 500px;margin:0 auto">
+            书名:<input type="text" v-model="book.name"> <br>
+            价格:<input type="text" v-model="book.price"> <br>
+
+            
+            <button type="button" class="btn btn-default" @click.prevent="addBook">添加</button>
+            
+        </form>
+
+
+        <table class="table table-bordered" style="width: 800px;margin:50px auto;">
+            <thead>
+                <tr>
+                    <th>
+                        id
+                    </th>
+                    <th>
+                        书名
+                    </th>
+                    <th>
+                        价格
+                    </th>
+                    <th>数量</th>
+                    <th>
+                        操作
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(book, index) in bookList">
+                    <td>{{book.id}}</td>
+                    <td>{{book.name}}</td>
+                    <td>{{book.price}}</td>
+                    <td>
+                        <input type="number" v-model.number="book.num">
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" @click="delBook(book.id)">删除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        总价: {{total()}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            methods: {
+                addBook() {
+                    console.log("999")
+                    this.bookList.push({
+                        id: this.bookList.length+1,
+                        name: this.book.name,
+                        price: this.book.price,
+                        num: 1
+                    })
+                },
+                total() {
+                    return this.bookList.reduce((total, item)=> {
+                        // console.log(item.num)
+                       total += item.price * item.num
+                       return total
+                    }, 0)
+                },
+                delBook(id) {
+                    // filter
+                    // this.bookList.filter((item)=> {
+                    //     return item.id !== id
+                    // })
+                    // filter 是一个纯函数
+                    this.bookList = this.bookList.filter(item=>item.id !== id)
+                    // this.bookList.splice(index, 1)
+                }
+            },
+            data: {
+                book: {
+                    
+                },
+                bookList: [
+                    {
+                        id: 1, 
+                        name: 'Javascript 权威指南',
+                        price: 20,
+                        num: 1
+                    },
+                    {
+                        id: 2, 
+                        name: 'Javascript 从入门到放弃',
+                        price: 29.99,
+                        num: 1
+                    },
+                    {
+                        id: 3, 
+                        name: 'Vue 从入门到放弃',
+                        price: 28,
+                        num: 1
+                    },
+                    {
+                        id: 4, 
+                        name: 'uniapp 从入门到放弃',
+                        price: 24,
+                        num: 1
+                    }
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

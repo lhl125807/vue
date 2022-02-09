@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
+    <style>
+        .g {
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+        }
+
+        .f {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+
+        .s {
+            width: 50px;
+            height: 50px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1 prevent 阻止默认事件 （常） 
+         2 stop 阻止事件冒泡（常） 
+         3 once  事件只触发一次（常） 
+         4  capture 使用事件的捕获模式
+         5 self   只有e.target 是当前操作的元素才触发
+         6  passive 事件的默认行为立即执行  无需等待事件
+    -->
+
+
+    <div id="root">
+        <div class="g" @click="g">
+            <div class="f" @click.self="f">
+                <div class="s" @click="s">
+                    <a href="" @click.prevent="s" >11</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el: "#root",
+            data: {
+
+            },
+            methods: {
+                g() {
+                    console.log("g");
+
+                },
+                f() {
+                    console.log("f");
+                },
+                s() {
+                    console.log("s");
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

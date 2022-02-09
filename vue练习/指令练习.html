@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+    <script script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        <p>{{name}}</p> <br>
+
+        <p v-once="msg">初始的数字 {{msg}}</p>
+        <p>加一的数字 {{msg}}</p>
+        <p>减一的数字 {{mm}}</p>
+
+        <button @click="add">点击我加1</button>
+        <button @click="del">点击我减1</button>
+
+        <h1>{{school.name}}</h1>
+
+        地址输入框：<input type="text" v-model="address" placeholder="请输入地址">
+        <br>
+        名称输入框：<input type="text" v-model="mc" placeholder="请输入学校名称">
+        <br>
+        <button @click="hq">点击我获取输入的内容</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>地址</th>
+                    <th>学校名称</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <tbody class="k">
+                <tr v-for="(item ,index) in list" class="j">
+                    <td>{{item.address}}</td>
+                    <td>{{item.mc}}</td>
+                    <td><a href="#" @click="sc" v-html="sck"></a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        键盘的事件：按下 谈起
+        <input type="text" @keyup="an">
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el: '#root',
+
+            data() {
+                return {
+                    name: "22",
+                    msg: 1,
+                    mm: 1,
+                    address: "",
+                    mc: "",
+                    sck: "删除",
+                    list: [],
+                    school: {
+                        name: "44"
+                    }
+                }
+            },
+            methods: {
+                add() {
+                    this.msg++;
+                },
+                del() {
+                    this.mm--;
+                },
+                hq() {
+                    var obj = {
+                        address: this.address,
+                        mc: this.mc,
+                    }
+                    this.list.push(obj);
+
+                },
+
+                sc() {
+                    document.querySelector(".k").removeChild(document.querySelector(".j"))
+                },
+
+                an() {
+                    //   console.log(number);
+                    console.log(1);
+                }
+            },
+
+
+        });
+
+        // setTimeout(() => {
+        //     vm.$mount("#root");
+        // }, 1000);
+    </script>
+</body>
+
+</html>

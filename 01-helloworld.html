@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            插值表达式  小胡子语法
+            {{}}
+         -->
+        <span>{{msg}}</span>
+    </div>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script> -->
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // console.log(Vue)
+        // Vue 没有操作DOM元素，但是就可以改变DOM
+        new Vue({
+            // 配置
+            // element 元素
+            // app这个元素 受到vue的控制
+            el: "#app",
+            // 数据
+            data: {
+                msg: "helloworld"
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
+    <style>
+        /* p {
+          color: aqua;
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <!-- <p :class="j">我是一段文字</p> -->
+        <!-- <p :class="{p:j}">我是一段文字</p> -->
+        <!-- <p :class="[j]">我是一段文字</p> -->
+        <!-- <p :style="[j]">我是一段文字</p> -->
+        <p :style="jj">我是一段文字</p>
+
+
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            el: "#root",
+            data: {
+                // j:{
+                //  jj:"p"  
+                // } 
+
+                // j: {
+                //     "color": "red"
+                // }
+                jj: "color:red"
+
+
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

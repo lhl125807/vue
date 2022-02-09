@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{user}}
+        {{user.name}}
+        <button @click="modify">修改了内容</button>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data: {
+                // 1. 在声明时就声明name
+                user: {
+                    // name: ""
+                }
+            },
+            methods: {
+                modify() {
+                    // 2.直接修改user数据
+                    this.user = {
+                        name: "小明"
+                    }
+
+                    // 3.this.$set
+                    // this.$set(this.user, 'name', "小明")
+
+                    // 4.强制更新 这种方案没有让name变成响应式数据
+                    // this.user.name = "小明"
+                    // this.$forceUpdate();
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mycolor {
+            color: red
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            1. 表达式或者变量
+
+            class="mycolor"
+
+            2. 对象形式
+            {className: 变量名或者表达式}
+
+            3. 数组形式
+            [变量1， 变量2，变量3]
+         -->
+        <!-- <span :class="isShow?'mycolor':''">动态绑定样式1</span> -->
+        <!-- <span :class="{mycolor:isShow}">动态绑定样式2</span> -->
+        <span :class="[class1]">动态绑定样式3</span>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+            //    isShow: true
+                class1: "mycolor"
+            }
+        })
+    </script>
+</body>
+</html>

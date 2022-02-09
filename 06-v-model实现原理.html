@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text">
+        <span></span>
+    </div>
+    <script>
+        var obj = {
+            // msg: "hellowolrd"
+        }
+        var str = ""
+        // 如果影响js中的数据
+        Object.defineProperty(obj, 'msg', {
+            get() {
+                return str;
+            },
+            set(val) {
+                // console.log("set/////")
+                str = val
+
+                document.querySelector("span").innerHTML = str
+            }
+        })
+
+
+        var input = document.querySelector("input")
+        input.oninput = function() {
+            console.log("实时触发")
+            obj.msg = input.value;
+        }
+        
+
+    </script>
+</body>
+</html>

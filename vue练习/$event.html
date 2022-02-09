@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+       <button @click="dianj(66,$event)">点击我</button>
+       <input type="text" v-model.number="hh" @keydown.enter="kk">
+       <a href="#" @click.prevent="dj">22</a>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el: '#root',
+            data() {
+                return {
+                  hh:11,
+                }
+            },
+            methods: {
+                dianj(number,e){
+                     console.log(number,e.target);
+                },
+                dj(){
+                    alert("你好我不会跳转")
+                },
+                kk(e){
+                  console.log(e.target.value);
+                   console.log(e.currentTarget);
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>

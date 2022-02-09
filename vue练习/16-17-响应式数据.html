@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
+
+</head>
+  
+<body>
+    <div id="root">
+        {{user}}
+        {{user.name}}
+
+        <button @click="dj">点击我</button>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            el: "#root",
+            data: {
+                user: {
+                    //    name:""
+                }
+            },
+            methods: {
+                dj() {
+                    // this.user = {
+                    //     name:"111"
+                    // }
+
+                    this.$set(this.user,'name',"55")
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>
