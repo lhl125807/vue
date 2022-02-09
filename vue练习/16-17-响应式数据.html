@@ -9,13 +9,20 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
 
 </head>
-  
+
 <body>
     <div id="root">
         {{user}}
         {{user.name}}
 
         <button @click="dj">点击我</button>
+
+        <!-- 这个使用数组 -->
+        <ul>
+            <li v-for="(item,index) in list">{{item}}</li>
+
+            <button @click="d">点击我</button>
+        </ul>
     </div>
     <script>
         Vue.config.productionTip = false;
@@ -24,7 +31,9 @@
             data: {
                 user: {
                     //    name:""
-                }
+
+                },
+                list: [1, 5, 85, 2]
             },
             methods: {
                 dj() {
@@ -32,8 +41,27 @@
                     //     name:"111"
                     // }
 
-                    this.$set(this.user,'name',"55")
+                    // this.$set(this.user, 'name', "55")
+                    //    强制更新  没有成为响应式
+                    this.user.name = "xiang "
+                    this.$forceUpdate();
+                },
+                d() {
+                    // 1
+                    // this.list=[1,5,7]
+
+                    // 2
+                    // this.list[0]="替换了"
+                    // this.$forceUpdate();
+
+                    // 3
+                    // this.list.push("追加了vue 重写了")
+
+                    // 4
+                     this.$set(this.list,0,"w")
+
                 }
+
             }
 
         })
